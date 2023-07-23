@@ -3,7 +3,16 @@ require('dotenv').config();
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 5000;
-app.use(cors());
+// app.use(cors());
+
+app.use(
+    cors({
+      origin: "*",
+      methods: "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "*",
+    }))
+    
 app.use(express.json());
 
 
@@ -76,6 +85,22 @@ async function run() {
       
         //     const result = await applyCollection.updateOne(filter, review, options)
         //     res.send(result);
+        //   })
+
+        // app.put('/applies/:id', async (req, res) => {
+        //     const id = req.params.id;
+        //     const filter = { _id: new ObjectId(id) }
+        //     const options = { upsert: true };
+        //     const update = req.body;
+        //     const classFd = {
+        //       $set: {
+        //         university: update.university,
+        //         address: update.address
+        //       }
+        //     }
+        //     const result = await applyCollection.updateOne(filter, classFd, options)
+        //     res.send(result);
+        //     console.log(result);
         //   })
 
 
